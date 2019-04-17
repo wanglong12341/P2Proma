@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -34,6 +36,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import bsh.StringUtil;
+
+
+
 
 
 
@@ -294,7 +299,7 @@ public class Dependents {
 			// 获取当前类的所在目录的路径
 			String path = Dependents.class.getResource("").getPath();
 			// FileReader的参数为所要执行的js文件的路径
-			engine.eval(new FileReader("id.js"));
+			engine.eval(new FileReader("guding.js"));
 			if (engine instanceof Invocable) {
 				Invocable invocable = (Invocable) engine;
 				idcrd = (String) invocable.invokeFunction("getIdNo");
@@ -437,7 +442,11 @@ public class Dependents {
 
 	// 写入文件
 	public static void writeFile(String s) throws IOException {
-		File file = new File("D:\\a.html");
+		
+//		String path = Dependents.class.getClassLoader().getResource("a.html").getPath();
+//		String path = Dependents.class.getClassLoader().getResource("a.html").getPath();
+//		System.out.println("");
+		File file = new File("./src/test/java/a.html");
 		FileWriter fw = new FileWriter(file); // 设置成true就是追加
 		fw.write(s);
 		fw.close();
@@ -448,8 +457,8 @@ public class Dependents {
 //		service.start();
 	
 		
-
-		System.setProperty("webdriver.chrome.driver", "d:\\chromedriver.exe");
+//		String path = P2PTest.class.getResource("chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		ChromeOptions chromeOptions = new ChromeOptions();
 //		 设置 chrome 的无头模式
 		chromeOptions.setHeadless(Boolean.TRUE);
@@ -458,7 +467,9 @@ public class Dependents {
 //		WebDriver driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
 		Thread.sleep(2000);
 		driver.manage().window().maximize();
-		driver.get("file:///D:/a.html");
+		String path = Dependents.class.getClassLoader().getResource("a.html").getPath();
+		System.out.println(path);
+		driver.get("file://"+path);
 		Thread.sleep(2000);
 		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 1400)");
 		Thread.sleep(2000);
@@ -487,9 +498,9 @@ public class Dependents {
 
 	public static void main(String[] args) throws IOException,
 			InterruptedException {
-		ChromeDriverService service = new ChromeDriverService.Builder() .usingDriverExecutable(new File("D:\\chromedriver.exe")).usingAnyFreePort().build();
-		service.start();
-	
+//		ChromeDriverService service = new ChromeDriverService.Builder() .usingDriverExecutable(new File("D:\\chromedriver.exe")).usingAnyFreePort().build();
+//		service.start();
+//	
 		
 
 //		System.setProperty("webdriver.chrome.driver", "d:\\chromedriver.exe");
@@ -498,34 +509,35 @@ public class Dependents {
 //		chromeOptions.setHeadless(Boolean.TRUE);
 		// 启动一个 chrome 实例
 //		WebDriver driver = new ChromeDriver(chromeOptions);
-		 WebDriver driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
-		Thread.sleep(2000);
-		driver.manage().window().maximize();
-		driver.get("file:///D:/a.html");
-		Thread.sleep(2000);
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 1400)");
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"sendSmsVerify\"]")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"alertLayer\"]/div[2]/a")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"smsCode\"]")).sendKeys("111111");
-		Thread.sleep(2000);
-//		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 2500)");
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("111111");
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"confirmPassword\"]")).sendKeys("111111");
-		Thread.sleep(2000);
-//		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 3500)");
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"form\"]/div[11]/div[3]/div/label/i[1]/img")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"nextButton\"]")).click();
-		Thread.sleep(2000);
-		driver.quit();
-		// 关闭 ChromeDriver 接口
-		service.stop();
+//		 WebDriver driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
+//		Thread.sleep(2000);
+//		driver.manage().window().maximize();
+//		driver.get("file:///D:/a.html");
+//		Thread.sleep(2000);
+//		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 1400)");
+//		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//*[@id=\"sendSmsVerify\"]")).click();
+//		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//*[@id=\"alertLayer\"]/div[2]/a")).click();
+//		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//*[@id=\"smsCode\"]")).sendKeys("111111");
+//		Thread.sleep(2000);
+////		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 2500)");
+//		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("111111");
+//		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//*[@id=\"confirmPassword\"]")).sendKeys("111111");
+//		Thread.sleep(2000);
+////		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 3500)");
+//		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//*[@id=\"form\"]/div[11]/div[3]/div/label/i[1]/img")).click();
+//		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//*[@id=\"nextButton\"]")).click();
+//		Thread.sleep(2000);
+//		driver.quit();
+//		// 关闭 ChromeDriver 接口
+//		service.stop();
+		writeFile("111");
 	}
 	// String a = "\"\"";
 

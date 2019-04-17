@@ -194,4 +194,8 @@ public class P2PTest extends Dependents{
 		return returnmap;
 
 	}
+//	@Test
+//	public void get11() throws IOException{
+//		writeFile("1212");
+//	}
 }
