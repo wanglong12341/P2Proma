@@ -444,18 +444,18 @@ public class Dependents {
 	}
 	//进行绑卡
 	public static void bk() throws IOException, InterruptedException{
-		ChromeDriverService service = new ChromeDriverService.Builder() .usingDriverExecutable(new File("D:\\chromedriver.exe")).usingAnyFreePort().build();
-		service.start();
+//		ChromeDriverService service = new ChromeDriverService.Builder() .usingDriverExecutable(new File("D:\\chromedriver.exe")).usingAnyFreePort().build();
+//		service.start();
 	
 		
 
-//		System.setProperty("webdriver.chrome.driver", "d:\\chromedriver.exe");
-//		ChromeOptions chromeOptions = new ChromeOptions();
-		// 设置 chrome 的无头模式
-//		chromeOptions.setHeadless(Boolean.TRUE);
-		// 启动一个 chrome 实例
-//		WebDriver driver = new ChromeDriver(chromeOptions);
-		WebDriver driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
+		System.setProperty("webdriver.chrome.driver", "d:\\chromedriver.exe");
+		ChromeOptions chromeOptions = new ChromeOptions();
+//		 设置 chrome 的无头模式
+		chromeOptions.setHeadless(Boolean.TRUE);
+//		 启动一个 chrome 实例
+		WebDriver driver = new ChromeDriver(chromeOptions);
+//		WebDriver driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
 		Thread.sleep(2000);
 		driver.manage().window().maximize();
 		driver.get("file:///D:/a.html");
@@ -482,7 +482,7 @@ public class Dependents {
 		Thread.sleep(2000);
 		driver.quit();
 		// 关闭 ChromeDriver 接口
-		service.stop();
+//		service.stop();
 	}
 
 	public static void main(String[] args) throws IOException,
