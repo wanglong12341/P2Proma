@@ -467,9 +467,11 @@ public class Dependents {
 //		WebDriver driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
 		Thread.sleep(2000);
 		driver.manage().window().maximize();
-		String path = Dependents.class.getClassLoader().getResource("a.html").getPath();
-		System.out.println(path);
-		driver.get("file://"+path);
+//		String path = Dependents.class.getClassLoader().getResource("a.html").getPath();
+//		String path = ClassLoader.getSystemResource("./src/test/java/P2PTest/P2PTest/a.html").getPath();
+//		System.out.println(path);
+//		System.out.println();
+		driver.get("file:///"+"./src/test/java/P2PTest/P2PTest/a.html");
 		Thread.sleep(2000);
 		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 1400)");
 		Thread.sleep(2000);
@@ -537,8 +539,8 @@ public class Dependents {
 //		driver.quit();
 //		// 关闭 ChromeDriver 接口
 //		service.stop();
-		writeFile("222");
-//		bk();
+//		writeFile("222");
+		bk();
 	}
 	// String a = "\"\"";
 
