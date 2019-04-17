@@ -446,7 +446,7 @@ public class Dependents {
 //		String path = Dependents.class.getClassLoader().getResource("a.html").getPath();
 //		String path = Dependents.class.getClassLoader().getResource("a.html").getPath();
 //		System.out.println("");
-		File file = new File("./src/test/java/a.html");
+		File file = new File("./src/test/java/P2PTest/P2PTest/a.html");
 		FileWriter fw = new FileWriter(file); // 设置成true就是追加
 		fw.write(s);
 		fw.close();
@@ -537,7 +537,8 @@ public class Dependents {
 //		driver.quit();
 //		// 关闭 ChromeDriver 接口
 //		service.stop();
-		writeFile("111");
+		writeFile("222");
+//		bk();
 	}
 	// String a = "\"\"";
 
